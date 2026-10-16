@@ -1,0 +1,13 @@
+{
+  "name": "welcome-to-shenzhen",
+  "private": true,
+  "scripts": {
+    "build": "SITE_ORIGIN=https://langcode.app/shenzhen python3 src/build.py",
+    "check": "python3 src/check.py",
+    "deploy": "npm run build && wrangler deploy",
+    "serve": "python3 src/serve.py"
+  },
+  "devDependencies": {
+    "wrangler": "^4.98.0"
+  }
+}

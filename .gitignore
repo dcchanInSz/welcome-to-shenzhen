@@ -1,0 +1,15 @@
+# Build output — regenerate with: python3 src/build.py
+/dist/
+/node_modules/
+.wrangler/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local tooling
+/tmp/
+*.pyc
+__pycache__/
