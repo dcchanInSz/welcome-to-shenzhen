@@ -9,6 +9,8 @@
   --ink-3: #14324a;
   --paper: #f4f8fa;
   --card: #ffffff;
+  --surface-muted: #eaf1f4;
+  color-scheme: light;
 
   --teal: #0e7c86;
   --teal-d: #085b63;
@@ -74,7 +76,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
 .section { padding-block: var(--sec-y); }
 .section--tight { padding-block: clamp(2rem, 4vw, 3rem); }
-.section--alt { background: #fff; }
+.section--alt { background: var(--card); }
 .section--ink { background: var(--ink-2); color: rgba(255,255,255,.86); }
 .section--ink h2, .section--ink h3 { color: #fff; }
 .section--ink .lede, .section--ink .muted { color: rgba(255,255,255,.68); }
@@ -115,7 +117,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 /* ---------- header ---------- */
 .skip-link {
   position: absolute; left: -9999px; top: 0; z-index: 200;
-  background: #fff; color: var(--ink); padding: .7rem 1rem; border-radius: 0 0 var(--r-s) 0;
+  background: var(--card); color: var(--text); padding: .7rem 1rem; border-radius: 0 0 var(--r-s) 0;
 }
 .skip-link:focus { left: 0; }
 
@@ -222,7 +224,23 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
   box-shadow: var(--shadow-l);
 }
 
-/* photographic hero: a soft light pool keeps the skyline legible under the copy */
+/* photographic hero: keep the skyline band in frame, and let it show through the scrim */
+.hero--photo {
+  background-image:
+    linear-gradient(102deg, rgba(4, 14, 24, .78) 0%, rgba(4, 20, 32, .58) 32%, rgba(6, 32, 44, .28) 64%, rgba(8, 44, 52, .16) 100%),
+    url("img/hero-cover.jpg");
+  background-size: cover;
+  background-position: center 36%;
+  background-repeat: no-repeat;
+}
+@media (max-width: 900px) {
+  .hero--photo {
+    background-image:
+      linear-gradient(180deg, rgba(4, 14, 24, .72) 0%, rgba(4, 18, 28, .48) 42%, rgba(6, 28, 40, .34) 100%),
+      url("img/hero-cover.jpg");
+    background-position: 68% 40%;
+  }
+}
 .hero--photo::before {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
   background: radial-gradient(620px 300px at 76% 104%, rgba(255, 168, 110, .26), transparent 72%),
@@ -259,7 +277,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .btn--coral { background: var(--coral); color: #fff; box-shadow: 0 6px 20px rgba(255,107,74,.3); }
 .btn--ghost { border-color: rgba(255,255,255,.35); color: #fff; }
 .btn--ghost:hover { background: rgba(255,255,255,.12); }
-.btn--line { border-color: var(--line); background: #fff; color: var(--ink); }
+.btn--line { border-color: var(--line); background: var(--card); color: var(--text); }
 .btn--line:hover { border-color: var(--teal); color: var(--teal-d); }
 .btn--sm { padding: .5rem .9rem; font-size: .84rem; }
 
@@ -338,7 +356,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .callout--warn { border-color: var(--gold); background: rgba(242,181,68,.1); }
 .callout--coral { border-color: var(--coral); background: rgba(255,107,74,.07); }
 .callout > :last-child { margin-bottom: 0; }
-.callout strong { color: var(--ink); }
+.callout strong { color: var(--text); }
 .callout-title { display: block; font-weight: 700; margin-bottom: .25rem; font-size: .92rem; letter-spacing: .01em; }
 
 /* ---------- key-value list ---------- */
@@ -355,7 +373,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .table-wrap {
   overflow-x: auto; overscroll-behavior-x: contain;
   max-width: 100%; -webkit-overflow-scrolling: touch;
-  border: 1px solid var(--line); border-radius: var(--r-m); background: #fff;
+  border: 1px solid var(--line); border-radius: var(--r-m); background: var(--card);
 }
 table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 520px; }
 thead th {
@@ -403,7 +421,7 @@ tbody tr:hover { background: rgba(30,147,232,.04); }
 }
 
 /* ---------- media / figures ---------- */
-.media { border-radius: var(--r-m); overflow: hidden; border: 1px solid var(--line); background: #eaf1f4; }
+.media { border-radius: var(--r-m); overflow: hidden; border: 1px solid var(--line); background: var(--surface-muted); }
 .media img { width: 100%; }
 .media--tall img { aspect-ratio: 4 / 3; object-fit: cover; }
 figure { margin: 0; }
@@ -411,7 +429,7 @@ figcaption { font-size: .8rem; color: var(--muted); margin-top: .5rem; }
 
 /* Official metro map: pan/zoom via native scroll on phone */
 .map-frame {
-  border-radius: var(--r-m); border: 1px solid var(--line); background: #fff;
+  border-radius: var(--r-m); border: 1px solid var(--line); background: var(--card);
   overflow: auto; -webkit-overflow-scrolling: touch;
   max-height: min(72vh, 820px); overscroll-behavior: contain;
 }
@@ -442,7 +460,7 @@ figcaption { font-size: .8rem; color: var(--muted); margin-top: .5rem; }
 .tile .tile-body { position: absolute; left: 1.1rem; right: 1.1rem; bottom: 1.05rem; z-index: 2; }
 
 /* ---------- accordion ---------- */
-.faq { border: 1px solid var(--line); border-radius: var(--r-m); background: #fff; overflow: hidden; }
+.faq { border: 1px solid var(--line); border-radius: var(--r-m); background: var(--card); overflow: hidden; }
 .faq details { border-bottom: 1px solid var(--line-2); }
 .faq details:last-child { border-bottom: 0; }
 .faq summary {
@@ -529,15 +547,41 @@ figcaption { font-size: .8rem; color: var(--muted); margin-top: .5rem; }
   .timeline > li.is-in .t, .steps > li.is-in::before { color: var(--teal-d); }
 }
 
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #07141c;
+    --card: #102433;
+    --surface-muted: #0c1c28;
+    --text: #e6f0f5;
+    --muted: #a9bccd;
+    --line: rgba(232, 244, 248, 0.12);
+    --line-2: rgba(232, 244, 248, 0.07);
+    --teal-d: #7ee0dc;
+    --azure-d: #8ecfff;
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.28);
+    --shadow-m: 0 8px 28px rgba(0, 0, 0, 0.35);
+    --shadow-l: 0 16px 40px rgba(0, 0, 0, 0.45);
+  }
+  .chip--coral { color: #ffb0a0; }
+  .chip--gold { color: #f3d48a; }
+  .card-icon { background: rgba(63, 208, 201, 0.12); color: var(--seafoam); }
+  thead th { background: rgba(255, 255, 255, 0.05); }
+  tbody tr:hover { background: rgba(142, 207, 255, 0.08); }
+  .note-src { background: rgba(255, 255, 255, 0.04); }
+}
+
 /* ---------- printable pocket card ---------- */
 .print-card {
   border: 1px dashed var(--line); border-radius: var(--r-m);
-  padding: 1.1rem 1.25rem; background: #fff;
+  padding: 1.1rem 1.25rem; background: var(--card);
 }
 .print-card h3 { margin-bottom: .35rem; }
 @media print {
   .site-header, .site-footer, .back-to-top, .toc, .lang-switch, .nav-toggle,
   .hero, .page-hero, .btn-row, .chip-row { display: none !important; }
+  :root { color-scheme: light; }
   body { background: #fff; font-size: 11pt; color: #000; }
   .card, .print-card, .callout, .faq details { break-inside: avoid; box-shadow: none; }
   .print-only { display: block !important; }
